@@ -89,7 +89,7 @@ export const TodoElement: React.FC<Props> = ({
     });
   };
 
-  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Escape') {
       setEditingTodoId(null);
       setOpen(false);
@@ -137,7 +137,7 @@ export const TodoElement: React.FC<Props> = ({
             value={newTodoTitle}
             onChange={e => setNewTodoTitle(e.target.value)}
             onBlur={handleBlur}
-            onKeyUp={handleKeyUp}
+            onKeyDown={handleKeyDown}
             disabled={isLoading}
             ref={inputRef}
           />
