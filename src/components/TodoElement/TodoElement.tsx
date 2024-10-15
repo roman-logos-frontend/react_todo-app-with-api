@@ -30,7 +30,7 @@ export const TodoElement: React.FC<Props> = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (open === true && editingTodoId === todo.id) {
+    if (open && editingTodoId === todo.id) {
       inputRef.current?.focus();
     }
   }, [open, editingTodoId, todo.id]);
@@ -77,7 +77,7 @@ export const TodoElement: React.FC<Props> = ({
   };
 
   const handleBlur = () => {
-    if (open === true) {
+    if (open) {
       handleSubmit();
     }
   };

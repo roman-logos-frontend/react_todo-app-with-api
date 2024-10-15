@@ -10,6 +10,7 @@ import { Footer } from './components/Footer';
 import { ErrorNotification } from './components/ErrorNotification';
 import { Header } from './components/Header';
 import { TodoList } from './components/TodoList';
+import { FilterStatus } from './types/filterStatus';
 
 export const App: React.FC = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -38,7 +39,7 @@ export const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (loader === false) {
+    if (!loader) {
       inputRef.current?.focus();
     }
   }, [loader]);
@@ -179,11 +180,11 @@ export const App: React.FC = () => {
 
   const filteredTodos = todos
     .filter(todo => {
-      if (filter === 'active') {
+      if (filter === FilterStatus.Active) {
         return !todo.completed;
       }
 
-      if (filter === 'completed') {
+      if (filter === FilterStatus.Completed) {
         return todo.completed;
       }
 
